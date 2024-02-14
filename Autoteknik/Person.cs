@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Autoteknik
 {
-    public abstract class Person : IPerson
+    public abstract class Person : IComparable<Person>
     {
         private int _id;
         private string _name;
@@ -33,11 +33,17 @@ namespace Autoteknik
             _name = name;
             _phone = phone;
         }
-
-        public abstract string IdInfo();
         public override string ToString()
         {
             return $"Id: {_id} - Name: {_name} - Phone {_phone}";
+        }
+        //public string IdInfo()
+        //{
+        //    return $"Id {_id}";
+        //}
+        public int CompareTo(Person? other)
+        {
+            return Name.CompareTo(other.Name);
         }
     }
 }

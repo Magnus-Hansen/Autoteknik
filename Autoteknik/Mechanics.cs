@@ -20,9 +20,9 @@ namespace Autoteknik
         {
             _education = education;
         }
-        public override string IdInfo()
-        {
-            return Id + "Internal";
-        }
+        //public override string IdInfo()
+        //{
+        //    return Id + "Internal";
+        //}
     }
 }

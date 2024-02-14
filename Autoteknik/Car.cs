@@ -59,12 +59,13 @@ namespace Autoteknik
         }
         public double TotalAutoRepairCost()
         {
-            double total = 0;
-            foreach (AutoRepair autoRepair in _autoRepairDic.Values)
-            {
-                total = total + autoRepair.Price;
-            }
-            return total;
+            //double total = 0;
+            //foreach (AutoRepair autoRepair in _autoRepairDic.Values)
+            //{
+            //    total = total + autoRepair.Price;
+            //}
+            //return total;
+            return _autoRepairDic.Values.Sum(autoRepair => autoRepair.Price);
         }
         public void AddOwner(Owner owner)
         {

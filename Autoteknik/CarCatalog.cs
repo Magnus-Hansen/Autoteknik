@@ -36,26 +36,43 @@ namespace Autoteknik
 
         public void AddCar(Car car)
         {
+            if (_carList.Contains(car) || (_carList.Find(c => (c.RegNr == car.RegNr)) != null))
+                throw new ArgumentException();
             _carList.Add(car);
         }
         public void AddRepairToCar(string regNr, AutoRepair newAutoRepair)
         {
-            foreach (Car car in _carList)
-            {
-                if (car.RegNr == regNr)
-                {
-                    car.AddAutoRepair(newAutoRepair);
-                }
-            }
+            Car carToRepair = _carList.Find(car => (car.RegNr == regNr));
+            if (carToRepair != null)
+                carToRepair.AddAutoRepair(newAutoRepair);
+
+            //foreach (Car car in _carList)
+            //{
+            //    if (car.RegNr == regNr)
+            //    {
+            //        car.AddAutoRepair(newAutoRepair);
+            //    }
+            //}
         }
         public double AllRepairCost()
         {
-            double total = 0;
-            foreach (Car car in _carList)
-            {
-                total += car.TotalAutoRepairCost();
-            }
-            return total;
+            return _carList.Sum(car => car.TotalAutoRepairCost());
+
+            //double total = 0;
+            //foreach (Car car in _carList)
+            //{
+            //    total += car.TotalAutoRepairCost();
+            //}
+            //return total;
+        }
+        public bool IsAllCarInCatalogAfter2000()
+        {
+            return _carList.All<Car>(c => c.Year > 2000);
+            //return !(_carList.FindAll(car => car.Year <= 2000) == null);
+        }
+        public int NumbersOfCarsWithRepairCostAbove10000()
+        {
+            return _carList.FindAll(car => car.TotalAutoRepairCost() > 10000).Count();
         }
         public override string ToString()
         {

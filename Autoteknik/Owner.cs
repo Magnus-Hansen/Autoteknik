@@ -20,9 +20,9 @@ namespace Autoteknik
         {
             _title = title;
         }
-        public override string IdInfo() 
-        {
-            return Id + "Owner";
-        }
+        //public override string IdInfo() 
+        //{
+        //    return Id + "Owner";
+        //}
     }
 }

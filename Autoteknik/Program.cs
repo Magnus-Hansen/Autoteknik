@@ -55,5 +55,12 @@ internal class Program
         car1.AddOwner(owner1);
 
         Console.WriteLine(car1.ToString());
+
+        Repository<Mechanics> mechanics = new Repository<Mechanics>();
+
+        Console.WriteLine("End meeeeeeeeeeeeeeeeeeeeeee");
+
+        mechanics.GetCustomOrdering((x, y) => { return x.Education.CompareTo(y.Education); });
+        mechanics.printAll();
     }
 }

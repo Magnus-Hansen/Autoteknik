@@ -13,7 +13,7 @@ namespace Autoteknik.Tests
         [TestMethod]
         public void AddItem_NoException()
         {
-            IRepository<Owner> ownerRepo = new Repository();
+            IRepository<Owner> ownerRepo = new Repository<Owner>();
             Owner o = new Owner("title", 2, "name", "phone");
             int beforeResult = ownerRepo.Count;
 
@@ -25,7 +25,7 @@ namespace Autoteknik.Tests
         [TestMethod]
         public void AddItem_Exception() 
         {
-            IRepository<Owner> ownerRepo = new Repository();
+            IRepository<Owner> ownerRepo = new Repository<Owner>();
             Owner o = new Owner("title", 2, "name", "phone");
             ownerRepo.Add(o);
             int beforeResult = ownerRepo.Count;
@@ -38,7 +38,7 @@ namespace Autoteknik.Tests
         [TestMethod]
         public void RemoveItem_NoException() 
         {
-            IRepository<Owner> ownerRepo = new Repository();
+            IRepository<Owner> ownerRepo = new Repository<Owner>();
             Owner o = new Owner("title", 2, "name", "phone");
             ownerRepo.Add(o);
             int beforeResult = ownerRepo.Count;
@@ -51,7 +51,7 @@ namespace Autoteknik.Tests
         [TestMethod]
         public void RemoveItem_Exception()
         {
-            IRepository<Owner> ownerRepo = new Repository();
+            IRepository<Owner> ownerRepo = new Repository<Owner>();
             Owner o = new Owner("title", 2, "name", "phone");
             Owner o2 = new Owner("title", 3, "name", "phone");
             ownerRepo.Add(o);
